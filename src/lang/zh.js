@@ -19,5 +19,15 @@ export default {
     any: '随便填',
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
+  },
+  user: {
+    username: '登录名',
+    realname: '姓名',
+    sex: '性别',
+    telphone: '手机号',
+    email: '邮箱',
+    status: '激活状态',
+    operate: '操作',
+    search: '搜索'
   }
 }

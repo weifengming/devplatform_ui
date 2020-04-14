@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input placeholder="标题" style="width: 200px;" class="filter-item" />
+      <el-input :placeholder="$t('user.username')" style="width: 200px;" class="filter-item" />
       <el-button class="filter-item" type="primary" icon="el-icon-search">
-        搜索
+        {{ $t('user.search') }}
       </el-button>
     </div>
     <el-table
@@ -14,13 +14,13 @@
       style="width: 100%"
     >
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column prop="username" label="登录名" align="center" />
-      <el-table-column prop="realname" label="姓名" width="200" align="center" />
-      <el-table-column prop="sex" label="性别" width="70" align="center" />
-      <el-table-column prop="phone" label="手机号" width="150" align="center" />
-      <el-table-column prop="email" label="邮箱" align="center" />
-      <el-table-column prop="active" label="激活状态" width="100" align="center" />
-      <el-table-column label="操作" align="center" width="230">
+      <el-table-column prop="username" :label="$t('user.username')" align="center" />
+      <el-table-column prop="realname" :label="$t('user.realname')" width="200" align="center" />
+      <el-table-column prop="sex" :label="$t('user.sex')" width="70" align="center" />
+      <el-table-column prop="telphone" :label="$t('user.telphone')" width="150" align="center" />
+      <el-table-column prop="email" :label="$t('user.email')" align="center" />
+      <el-table-column prop="status" :label="$t('user.status')" width="100" align="center" />
+      <el-table-column :label="$t('user.operate')" align="center" width="230">
         <template>
           <el-button type="primary" size="mini">
             编辑
@@ -30,7 +30,7 @@
           </el-button>
         </template>
       </el-table-column>
-      </el-table-column></el-table>
+    </el-table>
   </div>
 </template>
 <script>
@@ -43,33 +43,33 @@ export default {
         username: 'wangxh',
         realname: '王小虎',
         sex: '男',
-        phone: '18888888888',
+        telphone: '18888888888',
         email: 'abc@163.com',
-        active: '已激活'
+        status: '已激活'
       }, {
         id: 2,
         username: 'wangxh',
         realname: '王小虎',
         sex: '男',
-        phone: '18888888888',
+        telphone: '18888888888',
         email: 'abc@163.com',
-        active: '已激活'
+        status: '已激活'
       }, {
         id: 3,
         username: 'wangxh',
         realname: '王小虎',
         sex: '男',
-        phone: '18888888888',
+        telphone: '18888888888',
         email: 'abc@163.com',
-        active: '已激活'
+        status: '已激活'
       }, {
         id: 4,
         username: 'wangxh',
         realname: '王小虎',
         sex: '男',
-        phone: '18888888888',
+        telphone: '18888888888',
         email: 'abc@163.com',
-        active: '已激活'
+        status: '已激活'
       }]
     }
   }
