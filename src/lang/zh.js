@@ -1,6 +1,7 @@
 export default {
   route: {
     dashboard: '首页',
+    user: '用户管理',
     introduction: '简述'
   },
   navbar: {

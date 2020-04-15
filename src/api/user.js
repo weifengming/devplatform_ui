@@ -23,3 +23,11 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function fetchList(query) {
+  return request({
+    url: '/api/manage/suser/v1/user/getUserPage',
+    method: 'post',
+    params: query
+  })
+}

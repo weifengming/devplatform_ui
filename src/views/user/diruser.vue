@@ -7,6 +7,7 @@
       </el-button>
     </div>
     <el-table
+      v-loading="listLoading"
       :data="tableData"
       border
       fit
@@ -31,13 +32,32 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <div class="pagination-container">
+      <el-pagination
+        background
+        :current-page="currentPage4"
+        :page-sizes="[100, 200, 300, 400]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="400"
+      />
+    </div>
+
   </div>
 </template>
 <script>
+import { fetchList } from '@/api/user'
 export default {
   name: 'DirUser',
   data() {
     return {
+      list: null,
+      total: 0,
+      listLoading: true,
+      listQuery: {
+
+      },
       tableData: [{
         id: 1,
         username: 'wangxh',
@@ -70,7 +90,21 @@ export default {
         telphone: '18888888888',
         email: 'abc@163.com',
         status: '已激活'
-      }]
+      }],
+      currentPage4: 1
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      fetchList(this.listQuery).then(response => {
+
+      })
+      setTimeout(() => {
+        this.listLoading = false
+      }, 1.5 * 1000)
     }
   }
 }

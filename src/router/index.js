@@ -63,7 +63,7 @@ export const constantRoutes = [
         path: 'user',
         name: 'User',
         component: () => import('@/views/user/diruser'),
-        meta: { title: 'User', icon: 'user' }
+        meta: { title: 'user', icon: 'user' }
       }
     ]
   },

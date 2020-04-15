@@ -1,6 +1,7 @@
 export default {
   route: {
     dashboard: 'Dashboard',
+    user: 'User',
     introduction: 'Introduction'
   },
   navbar: {
@@ -10,6 +11,9 @@ export default {
     profile: 'Profile',
     theme: 'Theme',
     size: 'Global Size'
+  },
+  menu: {
+    user: 'User'
   },
   login: {
     title: 'DEVPLATFORM',

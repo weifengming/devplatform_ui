@@ -3,6 +3,7 @@
 @import './transition.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
+@import './btn.scss';
 
 body {
   height: 100%;
@@ -118,7 +119,7 @@ aside {
   }
 }
 
-// main-container global css
+//main-container全局样式
 .app-container {
   padding: 20px;
 }
@@ -130,6 +131,7 @@ aside {
 
 .pagination-container {
   margin-top: 30px;
+  text-align: center;
 }
 
 .text-center {
