@@ -1,7 +1,6 @@
 import request from '@/utils/request'
 
 export function login(data) {
-  console.log(data)
   return request({
     url: '/api/manage/suser/v1/user/login',
     method: 'post',
@@ -28,6 +27,6 @@ export function fetchList(query) {
   return request({
     url: '/api/manage/suser/v1/user/getUserPage',
     method: 'post',
-    params: query
+    data: query
   })
 }

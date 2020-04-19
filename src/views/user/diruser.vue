@@ -1,14 +1,14 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input :placeholder="$t('user.username')" style="width: 200px;" class="filter-item" />
-      <el-button class="filter-item" type="primary" icon="el-icon-search">
+      <el-input v-model="username" :placeholder="$t('user.username')" style="width: 200px;" class="filter-item" />
+      <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         {{ $t('user.search') }}
       </el-button>
     </div>
     <el-table
       v-loading="listLoading"
-      :data="tableData"
+      :data="list"
       border
       fit
       highlight-current-row
@@ -36,11 +36,13 @@
     <div class="pagination-container">
       <el-pagination
         background
-        :current-page="currentPage4"
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
+        :total="total"
+        :current-page="queryFilter.pageBean.page"
+        :page-sizes="[10, 20, 30, 40]"
+        :page-size="queryFilter.pageBean.pageSize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="400"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
 
@@ -48,6 +50,7 @@
 </template>
 <script>
 import { fetchList } from '@/api/user'
+import { isNull } from '@/utils/validate'
 export default {
   name: 'DirUser',
   data() {
@@ -55,43 +58,21 @@ export default {
       list: null,
       total: 0,
       listLoading: true,
-      listQuery: {
-
-      },
-      tableData: [{
-        id: 1,
-        username: 'wangxh',
-        realname: '王小虎',
-        sex: '男',
-        telphone: '18888888888',
-        email: 'abc@163.com',
-        status: '已激活'
-      }, {
-        id: 2,
-        username: 'wangxh',
-        realname: '王小虎',
-        sex: '男',
-        telphone: '18888888888',
-        email: 'abc@163.com',
-        status: '已激活'
-      }, {
-        id: 3,
-        username: 'wangxh',
-        realname: '王小虎',
-        sex: '男',
-        telphone: '18888888888',
-        email: 'abc@163.com',
-        status: '已激活'
-      }, {
-        id: 4,
-        username: 'wangxh',
-        realname: '王小虎',
-        sex: '男',
-        telphone: '18888888888',
-        email: 'abc@163.com',
-        status: '已激活'
-      }],
-      currentPage4: 1
+      username: undefined,
+      queryFilter: {
+        pageBean: {
+          page: 1,
+          pageSize: 10,
+          showTotal: true
+        },
+        querys: [],
+        sorter: [
+          {
+            direction: 'DESC',
+            property: 'createTime'
+          }
+        ]
+      }
     }
   },
   created() {
@@ -99,12 +80,36 @@ export default {
   },
   methods: {
     getList() {
-      fetchList(this.listQuery).then(response => {
-
-      })
-      setTimeout(() => {
+      fetchList(this.queryFilter).then(response => {
+        this.list = response.data.rows
+        this.total = response.data.total
         this.listLoading = false
-      }, 1.5 * 1000)
+      })
+    },
+    handleFilter() {
+      this.queryFilter.pageBean.page = 1
+      // clear params
+      this.queryFilter.querys.length = 0
+      if (!isNull(this.username)) {
+        const userQuery = {
+          'hasInitValue': true,
+          'operation': 'LIKE',
+          'property': 'username',
+          'relation': 'AND',
+          'value': '%' + this.username + '%'
+        }
+        this.queryFilter.querys.push(userQuery)
+      }
+      this.getList()
+    },
+    handleSizeChange(val) {
+      this.queryFilter.pageBean.pageSize = val
+      this.queryFilter.pageBean.page = 1
+      this.getList()
+    },
+    handleCurrentChange(val) {
+      this.queryFilter.pageBean.page = val
+      this.getList()
     }
   }
 }

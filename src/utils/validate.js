@@ -18,3 +18,13 @@ export function validUsername(str) {
   const valid_map = ['sysadmin', 'editor']
   return valid_map.indexOf(str.trim()) >= 0
 }
+
+/**
+ * @param {string} str
+ */
+export function isNull(str) {
+  if (str === undefined || str === '' || str == null) {
+    return true
+  }
+  return false
+}
