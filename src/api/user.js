@@ -30,3 +30,27 @@ export function fetchList(query) {
     data: query
   })
 }
+
+export function addUser(params) {
+  return request({
+    url: '/api/manage/suser/v1/user/save',
+    method: 'post',
+    data: params
+  })
+}
+
+export function updateById(params) {
+  return request({
+    url: '/api/manage/suser/v1/user/updateById',
+    method: 'post',
+    data: params
+  })
+}
+
+export function deleteById(params) {
+  return request({
+    url: '/api/manage/suser/v1/user/deleteById',
+    method: 'delete',
+    params: { id: params }
+  })
+}

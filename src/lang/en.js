@@ -1,4 +1,19 @@
 export default {
+  button: {
+    save: 'Save',
+    cancel: 'Cancel',
+    operate: 'Operate',
+    search: 'Search',
+    add: 'Add',
+    edit: 'Edit',
+    delete: 'Delete'
+  },
+  dict: {
+    male: 'Male',
+    female: 'FeMale',
+    open: 'Open',
+    close: 'Cloae'
+  },
   route: {
     dashboard: 'Dashboard',
     user: 'User',
@@ -30,9 +45,10 @@ export default {
     sex: 'Sex',
     telphone: 'Telphone',
     email: 'Email',
+    org: 'Org',
     status: 'Status',
-    operate: 'Operate',
-    search: 'Search'
+    comment: 'Comment',
+    createtime: 'Createtime'
   }
 }
 
